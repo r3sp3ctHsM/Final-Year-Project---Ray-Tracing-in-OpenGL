@@ -1,10 +1,10 @@
 ﻿  OpenGL Ray Tracing v2.cpp
-F:\OneDrive\DMU\OneDrive - De Montfort University\Year 3\FPY 2\Final-Year-Project---Ray-Tracing-in-OpenGL\OpenGL Ray Tracing v2\src\OpenGL Ray Tracing v2.cpp(239,27): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+F:\OneDrive\DMU\OneDrive - De Montfort University\Year 3\FPY 2\Final-Year-Project---Ray-Tracing-in-OpenGL\OpenGL Ray Tracing v2\src\OpenGL Ray Tracing v2.cpp(240,27): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-F:\OneDrive\DMU\OneDrive - De Montfort University\Year 3\FPY 2\Final-Year-Project---Ray-Tracing-in-OpenGL\OpenGL Ray Tracing v2\src\OpenGL Ray Tracing v2.cpp(240,48): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+F:\OneDrive\DMU\OneDrive - De Montfort University\Year 3\FPY 2\Final-Year-Project---Ray-Tracing-in-OpenGL\OpenGL Ray Tracing v2\src\OpenGL Ray Tracing v2.cpp(241,48): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
