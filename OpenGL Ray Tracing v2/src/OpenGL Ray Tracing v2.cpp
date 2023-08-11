@@ -27,6 +27,8 @@ Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
+bool spacePress = false;
+bool firstPress = true;
 
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
@@ -72,6 +74,7 @@ int main()
     Shader lightingShader("Shaders\\colors.vs", "Shaders\\colors.fs");
     Shader lightCubeShader("Shaders\\light_cube.vs", "Shaders\\light_cube.fs");
     Shader planeShader("Shaders\\plane.vs", "Shaders\\plane.fs");
+    Shader lineShader("Shaders\\line.vs", "Shaders\\line.fs");
 
     float vertices[] = {
         -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
@@ -147,6 +150,11 @@ int main()
          5.0f, -0.5f, -5.0f, 0.0f, 1.0f, 0.0f,  2.0f, 2.0f
     };
 
+    float line[] = {
+        0.0, 0.0, 0.0,
+        0.0, 1.0, 0.0
+    };
+
     unsigned int cubeVBO, cubeVAO;
     glGenVertexArrays(1, &cubeVAO);
     glGenBuffers(1, &cubeVBO);
@@ -188,6 +196,18 @@ int main()
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
     glEnableVertexAttribArray(2);
 
+    unsigned int lineVBO, lineVAO;
+    glGenVertexArrays(1, &lineVAO);
+    glGenBuffers(1, &lineVBO);
+
+    glBindBuffer(GL_ARRAY_BUFFER, lineVBO);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(line), line, GL_STATIC_DRAW);
+
+    glBindVertexArray(lineVAO);
+
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+    glEnableVertexAttribArray(0);
+
     unsigned int diffuseMap = loadTexture("Resources\\Textures\\container2.png");
     unsigned int specularMap = loadTexture("Resources\\Textures\\container2_specular.png");
     unsigned int emissionMap = loadTexture("Resources\\Textures\\matrix.png");
@@ -202,6 +222,8 @@ int main()
     planeShader.use();
     planeShader.setInt("material.diffuse", 0);
     planeShader.setInt("material.specular", 1);
+
+    glm::mat4 lineModel = glm::mat4(1.0f);
 
     while (!glfwWindowShouldClose(window))
     {
@@ -438,6 +460,21 @@ int main()
             glDrawArrays(GL_TRIANGLES, 0, 36);
         }
 
+        lineShader.use();
+        lineShader.setMat4("projection", projection);
+        lineShader.setMat4("view", view);
+        if (spacePress && firstPress)
+        {
+            lineModel = glm::inverse(camera.GetViewMatrix());
+            lineModel = glm::rotate(lineModel, glm::radians(90.0f), glm::vec3(-1.0f, 0.0f, 0.0f));
+            firstPress = false;
+        }
+        lineShader.setMat4("model", lineModel);
+
+        glBindVertexArray(lineVAO);
+        glDrawArrays(GL_LINES, 0, 2);
+
+
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
@@ -471,6 +508,15 @@ void processInput(GLFWwindow* window)
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
     {
         camera.ProcessKeyboard(RIGHT, deltaTime);
+    }
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+    {
+        spacePress = true;
+    }
+    else
+    {
+        spacePress = false;
+        firstPress = true;
     }
 }
 

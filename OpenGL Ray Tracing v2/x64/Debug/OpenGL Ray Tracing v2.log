@@ -1,13 +1,13 @@
 ﻿  OpenGL Ray Tracing v2.cpp
-F:\OneDrive\DMU\OneDrive - De Montfort University\Year 3\FPY 2\OpenGL Ray Tracing v2\src\OpenGL Ray Tracing v2.cpp(217,27): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+F:\OneDrive\DMU\OneDrive - De Montfort University\Year 3\FPY 2\Final-Year-Project---Ray-Tracing-in-OpenGL\OpenGL Ray Tracing v2\src\OpenGL Ray Tracing v2.cpp(239,27): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-F:\OneDrive\DMU\OneDrive - De Montfort University\Year 3\FPY 2\OpenGL Ray Tracing v2\src\OpenGL Ray Tracing v2.cpp(218,48): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+F:\OneDrive\DMU\OneDrive - De Montfort University\Year 3\FPY 2\Final-Year-Project---Ray-Tracing-in-OpenGL\OpenGL Ray Tracing v2\src\OpenGL Ray Tracing v2.cpp(240,48): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
 LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  OpenGL Ray Tracing v2.vcxproj -> F:\OneDrive\DMU\OneDrive - De Montfort University\Year 3\FPY 2\OpenGL Ray Tracing v2\x64\Debug\OpenGL Ray Tracing v2.exe
+  OpenGL Ray Tracing v2.vcxproj -> F:\OneDrive\DMU\OneDrive - De Montfort University\Year 3\FPY 2\Final-Year-Project---Ray-Tracing-in-OpenGL\OpenGL Ray Tracing v2\x64\Debug\OpenGL Ray Tracing v2.exe
