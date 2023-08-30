@@ -27,12 +27,12 @@ void main()
 	float x = (float(pixel_coords.x * 2 - dims.x) / dims.x);
 	float y = (float(pixel_coords.y * 2 - dims.y) / dims.y);
 	vec3 ray_o = vec3(x * max_x, y * max_y, 0.0);
-	vec3 ray_d = vec3(0.0, 0.0, -1.0); // ortho
+	vec3 ray_d = vec3(0.0, 0.0, -1.0);
 
 	vec3 sphere_c = vec3(0.0, 0.0, -10.0);
 	float sphere_r = 1.0;
 
-	vec3 omc = ray_o - sphere_c;
+	vec3 omc = ray_o - sphere_c; // Origin minus Centre
 	float b = dot(ray_d, omc);
 	float c = dot(omc, omc) - sphere_r * sphere_r;
 	float bsqmc = b * b - c;
